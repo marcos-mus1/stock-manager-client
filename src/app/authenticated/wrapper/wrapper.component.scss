@@ -1,0 +1,84 @@
+@use '../../../assets/scss/abstracts'as *;
+
+.wrapper {
+  @include flex(flex-start, flex-start);
+
+  &__sidebar {
+    width: 270px;
+    height: 100vh;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    position: fixed;
+    left: 0;
+    z-index: 1;
+
+  }
+
+  &__content {
+    width: calc(100% - 270px);
+    margin-left: 270px;
+    height: 100vh;
+
+    &-topbar {
+      width: 100%;
+      background-color: white;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+      padding: 0.5rem 1rem;
+
+      position: sticky;
+      top: 0;
+
+      @include flex(center, space-between);
+
+      .expanded {
+        width: 40px;
+        height: 40px;
+        background-color: rgba(211, 211, 211, 0.694);
+        border-radius: 50%;
+
+        @include flex();
+        color: $primary-color;
+        cursor: pointer
+      }
+
+      .profile {
+        @include flex();
+        gap: 1rem;
+        margin-right: 1rem;
+
+        .info {
+          @include flex();
+          gap: 0.5rem;
+
+          .avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: $primary-color;
+            color: white;
+
+            @include flex()
+          }
+
+          line-height: 1.1rem;
+
+          h4 {
+            font-weight: 500;
+          }
+
+          p {
+            font-size: 0.9rem;
+            color: gray;
+          }
+        }
+
+        button {
+          border: none;
+          outline: none;
+          background: none;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

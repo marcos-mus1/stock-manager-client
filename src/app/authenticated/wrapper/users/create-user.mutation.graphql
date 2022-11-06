@@ -1,0 +1,9 @@
+mutation createUser($createUserInput: CreateUserDto!) {
+  createUser(createUserInput: $createUserInput) {
+    id
+    firstName
+    lastName
+    email
+    isAdmin
+  }
+}

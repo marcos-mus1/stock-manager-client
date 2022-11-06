@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="container__header">
+    <h2>Login</h2>
+    <p>Provide your credentials to get connected</p>
+  </div>
+  <div class="container__form">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="input-field">
+        <input
+          type="email"
+          placeholder="Email Address"
+          formControlName="email"
+        />
+      </div>
+      <div class="input-field">
+        <input
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+      </div>
+      <div class="error" *ngIf="errorMessage !== ''">
+        {{ errorMessage }}
+      </div>
+      <button type="submit">
+        {{ isLoading ? "Connecting ..." : "Submit" }}
+      </button>
+    </form>
+  </div>
+</div>
