@@ -1,0 +1,8 @@
+mutation createItem($createItemInput: CreateItemDto!) {
+  createItem(createItemInput: $createItemInput) {
+    alertStock
+    name
+    refNumber
+    stock
+  }
+}

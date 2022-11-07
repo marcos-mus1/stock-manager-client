@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "graphql-client": {
+    "client": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/graphql-client",
+            "outputPath": "dist/client",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -69,11 +69,11 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "graphql-client:build:production",
+              "browserTarget": "client:build:production",
               "proxyConfig": "src/proxy.config.json"
             },
             "development": {
-              "browserTarget": "graphql-client:build:development",
+              "browserTarget": "client:build:development",
               "proxyConfig": "src/proxy.config.json"
             }
           },
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "graphql-client:build"
+            "browserTarget": "client:build"
           }
         },
         "test": {

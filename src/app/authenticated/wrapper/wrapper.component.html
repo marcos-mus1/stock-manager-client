@@ -1,5 +1,68 @@
 <div class="wrapper">
-  <div class="wrapper__sidebar">sidebar</div>
+  <div class="wrapper__sidebar">
+    <div class="header">
+      <a routerLink="">
+        <img src="/assets/images/logo.png" alt="Logo" />
+      </a>
+    </div>
+    <div class="menu">
+      <ul>
+        <div>
+          <a
+            routerLink=""
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><i class="fa-solid fa-gauge"></i> Dashbaord</a
+          >
+        </div>
+        <div>
+          <a
+            routerLink="items"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><i class="fa-solid fa-list"></i> Items</a
+          >
+        </div>
+        <div>
+          <a
+            routerLink="mouvements"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><i class="fa-solid fa-arrow-right-arrow-left"></i>Mouvements</a
+          >
+        </div>
+        <div>
+          <a
+            routerLink="summary"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><i class="fa-solid fa-chart-pie"></i>Summary</a
+          >
+        </div>
+        <div>
+          <a
+            routerLink="users"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <i class="fa-solid fa-users"></i>Users</a
+          >
+        </div>
+        <div>
+          <a
+            routerLink="settings"
+            routerLinkActive="active-link"
+            [routerLinkActiveOptions]="{ exact: true }"
+            ><i class="fa-solid fa-gears"></i>Settings</a
+          >
+        </div>
+      </ul>
+    </div>
+    <div class="footer">
+      <p>Stock Manager V1.0</p>
+      <span>&copy; 2020, all right reserved</span>
+    </div>
+  </div>
   <div class="wrapper__content">
     <div class="wrapper__content-topbar">
       <div class="expanded">

@@ -1,0 +1,10 @@
+query items {
+  items {
+    alertStock
+    id
+    name
+    refNumber
+    status
+    stock
+  }
+}

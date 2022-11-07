@@ -11,12 +11,13 @@ const routes: Routes = [
 
   {
     path: '',
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import('./authenticated/wrapper/wrapper.module').then(
         (m) => m.WrapperModule
       ),
-    canActivate: [AuthGuard],
   },
+
   {
     path: '**',
     redirectTo: '',

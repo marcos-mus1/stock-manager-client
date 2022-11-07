@@ -1,0 +1,68 @@
+@use '../../../../assets/scss/abstracts'as *;
+
+.container {
+
+  .header {
+    @include flex(center, space-between);
+    position: fixed;
+    top: 3.8rem;
+    width: calc(100% - 270px);
+    left: 270px;
+    border-top: 1px solid rgba(227, 227, 227, 0.304);
+    padding: 0.5rem 1rem;
+    background-color: white;
+    z-index: 1;
+
+    .center {
+      @include flex();
+      gap: 0.5rem;
+
+      padding: 0.65rem 1rem;
+      border: 1px solid lightgrey;
+      border-radius: 30px;
+      min-width: 320px;
+
+      input {
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+      }
+    }
+
+
+  }
+
+  .content {
+
+    margin-top: 5rem;
+    width: 100%;
+    height: 100vh;
+    @include flex(flex-start, flex-start);
+    padding: 1rem;
+
+    .left {
+      flex: 3;
+      border-right: 1px solid rgba(227, 227, 227, 0.304);
+
+      .headers {
+        width: calc(100% - 725px);
+        background: $primary-color;
+        position: fixed;
+        top: 9rem;
+        left: 300px;
+      }
+
+      .table {
+        margin: 1rem;
+        background: red;
+        width: calc(100% - 1rem);
+        height: 100%;
+      }
+    }
+
+    .right {
+      flex: 1.5
+    }
+  }
+}

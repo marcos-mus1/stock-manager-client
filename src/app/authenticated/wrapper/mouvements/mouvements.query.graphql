@@ -1,0 +1,18 @@
+query mouvements {
+  mouvements {
+    date
+    id
+    item {
+      name
+      refNumber
+      id
+    }
+    mouvement
+    quantity
+    vehicule {
+      id
+      name
+    name
+    }
+  }
+}

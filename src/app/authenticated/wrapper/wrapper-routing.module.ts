@@ -26,7 +26,7 @@ const routes: Routes = [
         component: MouvementsComponent,
       },
       {
-        path: 'Settings',
+        path: 'settings',
         component: SettingsComponent,
       },
       {
@@ -34,7 +34,7 @@ const routes: Routes = [
         component: SummaryComponent,
       },
       {
-        path: '',
+        path: 'users',
         component: UsersComponent,
       },
     ],

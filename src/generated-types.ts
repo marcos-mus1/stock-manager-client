@@ -136,13 +136,13 @@ export type MutationUpdateVehiculeArgs = {
 
 export type Query = {
   __typename?: 'Query';
-  Item: Item;
-  Items: Array<Item>;
-  Mouvement: Mouvement;
-  Mouvements: Array<Mouvement>;
-  Vehicule: Vehicule;
-  Vehicules: Array<Vehicule>;
+  item: Item;
+  items: Array<Item>;
+  mouvement: Mouvement;
+  mouvements: Array<Mouvement>;
   user: User;
+  vehicule: Vehicule;
+  vehicules: Array<Vehicule>;
 };
 
 export type QueryItemArgs = {
@@ -153,12 +153,12 @@ export type QueryMouvementArgs = {
   id: Scalars['Int'];
 };
 
-export type QueryVehiculeArgs = {
-  id: Scalars['Int'];
-};
-
 export type QueryUserArgs = {
   email: Scalars['String'];
+};
+
+export type QueryVehiculeArgs = {
+  id: Scalars['Int'];
 };
 
 export type UpdateItemDto = {
@@ -211,6 +211,51 @@ export type Vehicule = {
   status?: Maybe<Scalars['String']>;
 };
 
+export type ItemsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type ItemsQuery = {
+  __typename?: 'Query';
+  items: Array<{
+    __typename?: 'Item';
+    alertStock: number;
+    id: string;
+    name: string;
+    refNumber: string;
+    status?: string | null;
+    stock: number;
+  }>;
+};
+
+export type CreateItemMutationVariables = Exact<{
+  createItemInput: CreateItemDto;
+}>;
+
+export type CreateItemMutation = {
+  __typename?: 'Mutation';
+  createItem: {
+    __typename?: 'Item';
+    alertStock: number;
+    name: string;
+    refNumber: string;
+    stock: number;
+  };
+};
+
+export type MouvementsQueryVariables = Exact<{ [key: string]: never }>;
+
+export type MouvementsQuery = {
+  __typename?: 'Query';
+  mouvements: Array<{
+    __typename?: 'Mouvement';
+    date: string;
+    id: string;
+    mouvement: string;
+    quantity: number;
+    item: { __typename?: 'Item'; name: string; refNumber: string; id: string };
+    vehicule: { __typename?: 'Vehicule'; id: string; name: string };
+  }>;
+};
+
 export type CreateUserMutationVariables = Exact<{
   createUserInput: CreateUserDto;
 }>;
@@ -227,6 +272,87 @@ export type CreateUserMutation = {
   };
 };
 
+export const ItemsDocument = gql`
+  query items {
+    items {
+      alertStock
+      id
+      name
+      refNumber
+      status
+      stock
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class ItemsGQL extends Apollo.Query<ItemsQuery, ItemsQueryVariables> {
+  document = ItemsDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
+export const CreateItemDocument = gql`
+  mutation createItem($createItemInput: CreateItemDto!) {
+    createItem(createItemInput: $createItemInput) {
+      alertStock
+      name
+      refNumber
+      stock
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class CreateItemGQL extends Apollo.Mutation<
+  CreateItemMutation,
+  CreateItemMutationVariables
+> {
+  document = CreateItemDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
+export const MouvementsDocument = gql`
+  query mouvements {
+    mouvements {
+      date
+      id
+      item {
+        name
+        refNumber
+        id
+      }
+      mouvement
+      quantity
+      vehicule {
+        id
+        name
+        name
+      }
+    }
+  }
+`;
+
+@Injectable({
+  providedIn: 'root',
+})
+export class MouvementsGQL extends Apollo.Query<
+  MouvementsQuery,
+  MouvementsQueryVariables
+> {
+  document = MouvementsDocument;
+
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
 export const CreateUserDocument = gql`
   mutation createUser($createUserInput: CreateUserDto!) {
     createUser(createUserInput: $createUserInput) {
